@@ -4,12 +4,23 @@
     <meta charset="UTF-8">
     <title>Burutolu Roy - CI/CD Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon (optional: add img/favicon.ico to use this) -->
+    <link rel="icon" href="img/favicon.ico">
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Hero with your photo -->
+    <!-- Dark mode toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        🌙
+    </button>
+
+    <!-- Hero with gradient and your photo -->
     <header class="hero" id="home">
         <div class="hero-inner container">
+            <div class="logo-circle">BR</div>
+
             <img src="img/imgprofile.jpg" alt="Burutolu Roy" class="profile-pic">
 
             <h1 class="hero-name">Burutolu Roy</h1>
@@ -18,62 +29,114 @@
             </p>
 
             <nav class="main-nav">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </nav>
         </div>
     </header>
 
     <main class="container">
         <!-- Welcome -->
-        <section class="card section">
+        <section class="card section reveal" id="welcome">
             <h2>Welcome</h2>
             <p>
                 This site is deployed automatically using 
                 <strong>GitHub</strong>, <strong>Jenkins</strong> and <strong>XAMPP</strong>.
                 Every change I push to GitHub is built and copied to this server by Jenkins.
             </p>
-            <p class="version">Version 2.1</p>
+            <p class="version">Version 3.5</p>
         </section>
 
         <!-- About -->
-        <section class="card section" id="about">
-            <h2>About</h2>
+        <section class="card section reveal" id="about">
+            <h2>About Me</h2>
             <p>
-                My name is <strong>Burutolu Roy</strong>. This project demonstrates a simple CI/CD
-                (Continuous Integration / Continuous Delivery) pipeline:
+                My name is <strong>Burutolu Roy</strong>. I enjoy building simple and reliable automation pipelines
+                that keep deployments fast and repeatable.
             </p>
+            <p>I work with:</p>
             <ul>
-                <li>Code is stored in a repository on <strong>GitHub</strong>.</li>
-                <li><strong>Jenkins</strong> pulls the repository when changes are pushed.</li>
-                <li>Files are deployed to an Apache web server running on <strong>XAMPP</strong>.</li>
+                <li><strong>GitHub</strong> – version control and collaboration</li>
+                <li><strong>Jenkins</strong> – CI/CD automation</li>
+                <li><strong>XAMPP</strong> – local Apache / PHP stack for testing</li>
             </ul>
-            <p>
-                The page you are viewing is a one-page layout with sections for home, about and contact.
-                The navigation links at the top jump smoothly to each section.
-            </p>
+        </section>
+
+        <!-- Portfolio -->
+        <section class="card section reveal" id="portfolio">
+            <h2>Portfolio</h2>
+            <p>Some small things I’ve worked on include:</p>
+            <ul>
+                <li>✔ CI/CD pipeline that builds and deploys this website from GitHub using Jenkins.</li>
+                <li>✔ Local development environment setup with XAMPP and Apache.</li>
+                <li>✔ Basic static website design and layout customization.</li>
+                <li>✔ Git branching, commits, and automated deployment flows.</li>
+            </ul>
         </section>
 
         <!-- Contact -->
-        <section class="card section" id="contact">
+        <section class="card section reveal" id="contact">
             <h2>Contact</h2>
-            <p>If you would like to get in touch, you can reach me at:</p>
+            <p>If you’d like to connect or talk about tech and automation, you can reach me here:</p>
             <p class="contact-detail">
-                Email: <a href="mailto:burutoluroy@gmail.com">burutoluroy@gmail.com</a>
+                Email: 
+                <a href="mailto:burutoluroy@gmail.com">burutoluroy@gmail.com</a>
+            </p>
+            <p class="contact-detail">
+                LinkedIn: 
+                <a href="https://www.linkedin.com/in/YOUR-LINK-HERE" target="_blank">
+                    View my LinkedIn profile
+                </a>
             </p>
         </section>
     </main>
 
+    <!-- Floating contact button -->
+    <a href="#contact" class="contact-fab" title="Contact me">
+        ✉️
+    </a>
+
     <footer class="site-footer">
         <div class="container">
-            <p>&copy; <span id="year"></span> Burutolu Roy · CI/CD Demo · Version 2.1</p>
+            <p>&copy; <span id="year"></span> Burutolu Roy · CI/CD Demo · Version 3.5</p>
         </div>
     </footer>
 
     <script>
-        // Show current year automatically in the footer
+        // Current year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Smooth scroll is handled via CSS (scroll-behavior: smooth)
+
+        // Reveal on scroll
+        const revealEls = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            const trigger = window.innerHeight * 0.9;
+            revealEls.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                if (top < trigger) el.classList.add('visible');
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Dark mode toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('br-theme');
+
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+            localStorage.setItem('br-theme', isDark ? 'dark' : 'light');
+        });
     </script>
 </body>
 </html>
