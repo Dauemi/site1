@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Burutolu Roy - Site1</title>
+    <title>Burutolu Roy - CI/CD Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="site-header" id="home">
-        <div class="container">
-            <h1 class="site-title">Burutolu Roy</h1>
-            <p class="site-subtitle">Simple CI/CD website using GitHub, Jenkins &amp; XAMPP</p>
+    <!-- Hero with your photo -->
+    <header class="hero" id="home">
+        <div class="hero-inner container">
+            <img src="img/imgprofile.jpg" alt="Burutolu Roy" class="profile-pic">
+
+            <h1 class="hero-name">Burutolu Roy</h1>
+            <p class="hero-tagline">
+                Simple CI/CD website using <strong>GitHub</strong>, <strong>Jenkins</strong> &amp; <strong>XAMPP</strong>
+            </p>
 
             <nav class="main-nav">
                 <a href="#home">Home</a>
@@ -20,37 +26,39 @@
     </header>
 
     <main class="container">
-        <!-- Home / intro section -->
-        <section class="card section" >
+        <!-- Welcome -->
+        <section class="card section">
             <h2>Welcome</h2>
             <p>
                 This site is deployed automatically using 
                 <strong>GitHub</strong>, <strong>Jenkins</strong> and <strong>XAMPP</strong>.
-                Every change pushed to GitHub is built and copied to this server by Jenkins.
+                Every change I push to GitHub is built and copied to this server by Jenkins.
             </p>
-            <p class="version">Version 2.0</p>
+            <p class="version">Version 2.1</p>
         </section>
 
-        <!-- About section -->
+        <!-- About -->
         <section class="card section" id="about">
             <h2>About</h2>
             <p>
-                My name is <strong>Burutolu Roy</strong>. This project shows a basic DevOps
-                pipeline: code is stored in GitHub, Jenkins pulls the repository, and
-                deploys the files to an Apache server running on XAMPP.
+                My name is <strong>Burutolu Roy</strong>. This project demonstrates a simple CI/CD
+                (Continuous Integration / Continuous Delivery) pipeline:
             </p>
+            <ul>
+                <li>Code is stored in a repository on <strong>GitHub</strong>.</li>
+                <li><strong>Jenkins</strong> pulls the repository when changes are pushed.</li>
+                <li>Files are deployed to an Apache web server running on <strong>XAMPP</strong>.</li>
+            </ul>
             <p>
-                The page you are viewing is a single-page layout with sections for home,
-                about and contact. Navigation links simply scroll to each section.
+                The page you are viewing is a one-page layout with sections for home, about and contact.
+                The navigation links at the top jump smoothly to each section.
             </p>
         </section>
 
-        <!-- Contact section -->
+        <!-- Contact -->
         <section class="card section" id="contact">
             <h2>Contact</h2>
-            <p>
-                If you would like to get in touch, you can reach me at:
-            </p>
+            <p>If you would like to get in touch, you can reach me at:</p>
             <p class="contact-detail">
                 Email: <a href="mailto:burutoluroy@gmail.com">burutoluroy@gmail.com</a>
             </p>
@@ -59,12 +67,12 @@
 
     <footer class="site-footer">
         <div class="container">
-            <p>&copy; <span id="year"></span> Burutolu Roy &middot; Site1 &middot; Version 2.0</p>
+            <p>&copy; <span id="year"></span> Burutolu Roy · CI/CD Demo · Version 2.1</p>
         </div>
     </footer>
 
     <script>
-        // Set current year in footer
+        // Show current year automatically in the footer
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
